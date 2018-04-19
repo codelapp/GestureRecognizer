@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Gestures
-//
-//  Created by Jorge Maldonado Borbón on 07/02/18.
-//  Copyright © 2018 Jorge Maldonado Borbón. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

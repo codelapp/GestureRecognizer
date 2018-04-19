@@ -1,25 +1,42 @@
-//
-//  ViewController.swift
-//  Gestures
-//
-//  Created by Jorge Maldonado Borbón on 07/02/18.
-//  Copyright © 2018 Jorge Maldonado Borbón. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        /*
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        label.addGestureRecognizer(tap)
+    */
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+/*
+    @objc func tapAction(){
+        print("he dado un tap")
     }
-
-
+ */
+    
+    @IBAction func tap(_ sender: UITapGestureRecognizer) {
+        print("tap desde action")
+    }
+    
+    @IBAction func swipe(_ sender: UISwipeGestureRecognizer) {
+        performSegue(withIdentifier: "derecha", sender: self)
+    }
+    @IBAction func vista(_ sender: UIPanGestureRecognizer) {
+        
+        if sender.state == .began || sender.state == .changed {
+            let movimiento = sender.translation(in: sender.view)
+            let x = (sender.view?.center.x)! + movimiento.x
+            let y = (sender.view?.center.y)! + movimiento.y
+            
+            sender.view?.center = CGPoint(x: x, y: y)
+            sender.setTranslation(CGPoint.zero, in: sender.view)
+            
+        }
+        
+    }
+    
 }
 
